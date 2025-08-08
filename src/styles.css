@@ -119,7 +119,26 @@ a:hover {
   text-align: center;
 }
 
+/* Sidewise tilt animation for social icons */
+@keyframes tilt-scale {
+  0%   { transform: scale(1) rotate(0deg); }
+  30%  { transform: scale(1.15) rotate(-15deg); }
+  50%  { transform: scale(1.25) rotate(15deg); }
+  70%  { transform: scale(1.2) rotate(-10deg); }
+  100% { transform: scale(1.25) rotate(0deg); }
+}
+
 img.socialIcon {
   height: 30px;
   width: 30px;
+  transition: box-shadow 0.3s;
+  will-change: transform;
+  transform: scale(1); /* Ensure default scale */
+}
+
+img.socialIcon:hover {
+  animation: tilt-scale 0.6s forwards;
+  transform: scale(1.25); /* Keep icon scaled while hovered */
+  box-shadow: 0 8px 24px rgba(78, 86, 126, 0.25), 0 1.5px 6px rgba(78, 86, 126, 0.15);
+  filter: brightness(1.15) drop-shadow(0 0 8px #4e567e88);
 }
